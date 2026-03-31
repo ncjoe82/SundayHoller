@@ -1,0 +1,7 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Cloudflare-Email-Obfuscation = "off"
+
+[build]
+  publish = "."

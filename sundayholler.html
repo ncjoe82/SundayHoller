@@ -1,0 +1,3009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- email obfuscation: off -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunday Holler: East Tennessee Church Community</title>
+<meta name="description" content="Sunday Holler is a free community directory for churches across Claiborne, Hancock, Grainger, and Union County in East Tennessee. Find services, revivals, homecomings, and gospel singings.">
+<meta property="og:title" content="Sunday Holler: East Tennessee Church Community">
+<meta property="og:description" content="Find churches, revivals, and gospel singings across the ridge and valley country of East Tennessee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:      #1A1410;
+  --cream:    #F7F2E8;
+  --warm:     #FDFAF4;
+  --rust:     #A8442A;
+  --rust-lt:  #C85C3A;
+  --gold:     #BF9040;
+  --gold-lt:  #D4A85A;
+  --sage:     #5C6B54;
+  --mist:     #8E9E96;
+  --border:   #E2DAC8;
+  --shadow:   rgba(26,20,16,0.08);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── UTILITY ── */
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--rust);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.serif { font-family: 'Cormorant Garamond', serif; }
+.divider {
+  display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0;
+}
+.divider-line { flex: 1; height: 1px; background: var(--border); }
+.divider-glyph { color: var(--gold); font-size: 1.1rem; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 5vw;
+  transition: background 0.35s, box-shadow 0.35s;
+}
+nav.scrolled {
+  background: rgba(26,20,16,0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.nav-brand span { color: var(--gold-lt); }
+.nav-links { display: flex; gap: 0; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 500; color: rgba(255,255,255,0.72); text-decoration: none;
+  padding: 0.5rem 1rem; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-lt); }
+.nav-cta {
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 700; color: #fff; text-decoration: none;
+  padding: 0.6rem 1.3rem; border: 1.5px solid var(--gold);
+  transition: background 0.2s, color 0.2s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+/* ── TAB SYSTEM ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* Home page always visible as fallback if JS is slow to load */
+#page-home { display: block; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(to bottom,
+      rgba(20,13,8,0.72) 0%,
+      rgba(20,13,8,0.45) 55%,
+      rgba(247,242,232,1) 100%),
+    url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1800&q=85') center/cover no-repeat fixed;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 5rem 8vw 14rem;
+  position: relative;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(191,144,64,0.18); border: 1px solid rgba(191,144,64,0.4);
+  padding: 0.35rem 0.9rem; margin-bottom: 1.8rem; align-self: center;
+}
+.hero-tag span {
+  font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold-lt); font-weight: 700;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 700; color: #fff; line-height: 1.0;
+  max-width: 720px;
+}
+.hero h1 em { font-style: italic; color: var(--gold-lt); }
+.hero-desc {
+  font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.78);
+  max-width: 500px; line-height: 1.75; margin-top: 1.5rem;
+}
+.hero-btns {
+  display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+  justify-content: center;
+}
+.btn { 
+  padding: 0.85rem 2rem; font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; text-decoration: none; cursor: pointer;
+  border: none; transition: all 0.22s; display: inline-block;
+}
+.btn-primary { background: var(--rust); color: #fff; }
+.btn-primary:hover { background: var(--rust-lt); transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.45);
+}
+.btn-outline:hover { border-color: #fff; transform: translateY(-2px); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #2c231a; transform: translateY(-2px); }
+.btn-sage { background: var(--sage); color: #fff; }
+.btn-sage:hover { background: #4a5844; transform: translateY(-2px); }
+
+/* stat strip */
+.stat-strip {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--ink); display: flex;
+}
+.stat-item {
+  flex: 1; text-align: center; padding: 1.4rem 1rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700; color: var(--gold-lt);
+  display: block; line-height: 1;
+}
+.stat-label {
+  font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.42); margin-top: 0.3rem; display: block;
+}
+
+/* ── SEARCH BAR ── */
+.search-bar {
+  background: var(--ink); padding: 1.8rem 8vw;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.search-label {
+  font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; white-space: nowrap;
+}
+.search-row {
+  display: flex; flex: 1; min-width: 260px;
+}
+.search-row input {
+  flex: 1; padding: 0.8rem 1.2rem;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-right: none; color: #fff; font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; outline: none;
+}
+.search-row input::placeholder { color: rgba(255,255,255,0.3); }
+.search-row select {
+  padding: 0.8rem 0.9rem;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-right: none; color: rgba(255,255,255,0.65);
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none; cursor: pointer;
+}
+.search-row button {
+  padding: 0.8rem 1.4rem; background: var(--rust); border: none;
+  color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.75rem;
+  font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s;
+}
+.search-row button:hover { background: var(--rust-lt); }
+
+/* ── SECTIONS ── */
+section { padding: 5.5rem 8vw; }
+.section-header { margin-bottom: 3rem; }
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; color: var(--ink); line-height: 1.15;
+}
+.section-sub {
+  font-size: 0.97rem; font-weight: 300; color: #666;
+  line-height: 1.8; max-width: 540px; margin-top: 0.75rem;
+}
+
+/* ── CHURCH CARDS ── */
+.churches-bg { background: var(--cream); }
+
+.filter-tabs {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+}
+.filter-tab {
+  padding: 0.45rem 1.1rem; border: 1.5px solid var(--border);
+  background: transparent; font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #888; cursor: pointer; transition: all 0.2s;
+}
+.filter-tab.active, .filter-tab:hover {
+  border-color: var(--rust); color: var(--rust); background: rgba(168,68,42,0.05);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.5px;
+}
+
+.church-card {
+  background: var(--warm); padding: 1.8rem;
+  border-left: 3px solid transparent;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  cursor: pointer; position: relative;
+}
+.church-card:hover {
+  box-shadow: 0 8px 32px var(--shadow);
+  transform: translateY(-3px);
+  border-left-color: var(--rust);
+  z-index: 1;
+}
+.card-county {
+  font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--mist); font-weight: 700; margin-bottom: 0.5rem;
+}
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 700; color: var(--ink);
+  margin-bottom: 0.3rem; line-height: 1.2;
+}
+.card-denom {
+  font-size: 0.72rem; color: var(--rust); font-weight: 700;
+  letter-spacing: 0.06em; margin-bottom: 1rem;
+}
+.card-info { font-size: 0.82rem; color: #666; line-height: 1.9; }
+.card-info span { display: block; }
+.card-badge {
+  display: inline-block; margin-top: 1rem;
+  font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--sage); border: 1px solid var(--sage);
+  padding: 0.18rem 0.55rem; font-weight: 700;
+}
+.card-add {
+  background: var(--cream); border: 2px dashed #ccc;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; min-height: 200px; padding: 2rem;
+}
+.card-add p { 
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--mist); font-size: 1.05rem; margin-bottom: 0.5rem;
+}
+.card-add small { font-size: 0.8rem; color: #aaa; margin-bottom: 1.2rem; display: block; }
+
+/* ── REVIVAL / EVENTS ── */
+.revival-section { background: var(--ink); }
+.revival-section .section-title { color: #fff; }
+.revival-section .section-sub { color: rgba(255,255,255,0.52); }
+.revival-section .eyebrow { color: var(--gold-lt); }
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px; margin-top: 2.5rem;
+}
+.event-card {
+  background: rgba(255,255,255,0.04); padding: 2rem;
+  border-top: 2px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.event-card:hover { border-top-color: var(--gold); background: rgba(255,255,255,0.07); }
+.event-date-block { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1.2rem; }
+.event-month {
+  font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--rust-lt); font-weight: 700;
+}
+.event-day {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 700; color: var(--gold-lt); line-height: 1;
+}
+.event-year { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+.event-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;
+}
+.event-church {
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--sage); font-weight: 700; margin-bottom: 0.7rem;
+}
+.event-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+.event-type {
+  display: inline-block; margin-top: 1rem;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.2rem 0.6rem; font-weight: 700;
+}
+.type-revival { background: rgba(168,68,42,0.25); color: var(--rust-lt); }
+.type-homecoming { background: rgba(92,107,84,0.25); color: #8aad80; }
+.type-singing { background: rgba(191,144,64,0.2); color: var(--gold-lt); }
+.type-special { background: rgba(142,158,150,0.2); color: var(--mist); }
+
+/* ── FIFTH SUNDAY ── */
+.fifth-section { background: var(--cream); }
+.fifth-explainer {
+  background: var(--ink); color: rgba(255,255,255,0.7);
+  padding: 2rem 2.5rem; border-left: 4px solid var(--gold);
+  margin-bottom: 2.5rem; max-width: 680px;
+}
+.fifth-explainer p { font-size: 0.95rem; line-height: 1.8; }
+.fifth-explainer strong { color: var(--gold-lt); font-weight: 700; }
+
+.fifth-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.fifth-card {
+  border: 1.5px solid var(--border); background: var(--warm);
+  padding: 1.6rem; transition: border-color 0.2s;
+}
+.fifth-card:hover { border-color: var(--gold); }
+.fifth-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.fifth-church { font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+.fifth-county {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mist); font-weight: 700; margin-bottom: 0.7rem;
+}
+.fifth-detail { font-size: 0.85rem; color: #666; line-height: 1.7; }
+
+/* ── PRAYER WALL ── */
+.prayer-section { background: var(--warm); }
+.prayer-intro {
+  background: linear-gradient(135deg, var(--ink) 0%, #2c1f12 100%);
+  padding: 3rem 4rem; margin-bottom: 3rem;
+  display: flex; flex-wrap: wrap; gap: 2rem;
+  align-items: center; justify-content: space-between;
+}
+.prayer-intro h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700; color: #fff; max-width: 400px;
+}
+.prayer-intro h3 em { color: var(--gold-lt); font-style: italic; }
+.prayer-intro p { 
+  font-size: 0.9rem; color: rgba(255,255,255,0.6);
+  line-height: 1.75; max-width: 380px; margin-top: 0.5rem;
+}
+.prayer-form { display: flex; flex-direction: column; gap: 0.75rem; min-width: 280px; }
+.prayer-form input, .prayer-form textarea, .prayer-form select {
+  padding: 0.8rem 1rem; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15); color: #fff;
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem; outline: none;
+  transition: border-color 0.2s;
+}
+.prayer-form input::placeholder,
+.prayer-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+.prayer-form input:focus, .prayer-form textarea:focus { border-color: var(--gold); }
+.prayer-form textarea { resize: vertical; min-height: 80px; }
+
+.prayers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.prayer-card {
+  background: var(--cream); padding: 1.6rem;
+  border-top: 3px solid var(--border); position: relative;
+}
+.prayer-card.answered { border-top-color: var(--sage); }
+.prayer-card.urgent { border-top-color: var(--rust); }
+.prayer-category {
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 0.75rem;
+}
+.prayer-card.answered .prayer-category { color: var(--sage); }
+.prayer-card.urgent .prayer-category { color: var(--rust); }
+.prayer-card:not(.answered):not(.urgent) .prayer-category { color: var(--mist); }
+.prayer-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-style: italic; color: var(--ink);
+  line-height: 1.65; margin-bottom: 1rem;
+}
+.prayer-meta { font-size: 0.75rem; color: #aaa; }
+.prayer-meta strong { color: #888; }
+
+/* ── ABOUT ── */
+.about-section { background: var(--warm); }
+.about-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.about-pullquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600;
+  font-style: italic; color: var(--ink); line-height: 1.35;
+  border-left: 4px solid var(--gold); padding-left: 2rem;
+  margin: 2rem 0;
+}
+.about-body p {
+  font-size: 0.97rem; color: #555; line-height: 1.9;
+  margin-bottom: 1.2rem; font-weight: 300;
+}
+.about-values { margin-top: 2rem; }
+.about-value {
+  display: flex; gap: 1rem; padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.about-value:last-child { border-bottom: none; }
+.value-icon { font-size: 1.4rem; min-width: 2rem; text-align: center; }
+.value-text h4 {
+  font-weight: 700; color: var(--ink); font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+.value-text p { font-size: 0.85rem; color: #777; line-height: 1.65; }
+
+/* ── SUBMIT ── */
+.submit-section {
+  background: var(--rust); padding: 5rem 8vw;
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: space-between; gap: 2.5rem;
+}
+.submit-section .section-title { color: #fff; }
+.submit-section .section-sub { color: rgba(255,255,255,0.7); }
+.submit-section .eyebrow { color: rgba(255,255,255,0.6); }
+.submit-btns { display: flex; flex-direction: column; gap: 0.8rem; }
+.submit-btns a {
+  padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; text-align: center;
+  transition: all 0.2s;
+}
+.submit-btns a:first-child { background: #fff; color: var(--rust); }
+.submit-btns a:first-child:hover { background: var(--cream); }
+.submit-btns a:last-child { 
+  border: 1.5px solid rgba(255,255,255,0.45); color: #fff;
+}
+.submit-btns a:last-child:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); padding: 3.5rem 8vw;
+  display: flex; flex-wrap: wrap;
+  justify-content: space-between; align-items: center; gap: 1.5rem;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 700; color: rgba(255,255,255,0.6);
+}
+.footer-brand span { color: var(--gold); }
+.footer-tagline {
+  font-size: 0.78rem; color: rgba(255,255,255,0.28);
+  letter-spacing: 0.05em; margin-top: 0.3rem;
+}
+footer nav { position: static; padding: 0; background: transparent; }
+footer nav a {
+  font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); text-decoration: none;
+  margin-left: 1.5rem; transition: color 0.2s;
+}
+footer nav a:hover { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(26,20,16,0.85); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center; padding: 2rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--warm); max-width: 560px; width: 100%;
+  padding: 2.5rem; position: relative; max-height: 90vh; overflow-y: auto;
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; font-size: 1.5rem;
+  color: #aaa; cursor: pointer; line-height: 1;
+}
+.modal h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 1.5rem;
+}
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+.form-field label {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700; color: #888;
+}
+.form-field input, .form-field select, .form-field textarea {
+  padding: 0.75rem 1rem; border: 1.5px solid var(--border);
+  background: #fff; font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; color: var(--ink); outline: none; transition: border-color 0.2s;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  border-color: var(--rust);
+}
+.form-field textarea { resize: vertical; min-height: 90px; }
+.form-submit {
+  width: 100%; padding: 0.9rem; background: var(--rust); border: none;
+  color: #fff; font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+}
+.form-submit:hover { background: var(--rust-lt); }
+
+/* ── SCROLL ANIMATIONS ── */
+.scroll-reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+.page.active .scroll-reveal { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 5vw; }
+  .nav-links { display: none; }
+  .nav-cta { font-size: 0.62rem; padding: 0.5rem 0.8rem; letter-spacing: 0.08em; }
+  .hero { padding: 5rem 6vw 16rem; }
+  .hero-btns { flex-direction: column; align-items: center; gap: 0.75rem; }
+  .hero-btns .btn { width: 100%; max-width: 320px; text-align: center; }
+  .search-bar { flex-direction: column; align-items: stretch; }
+  .search-row { flex-direction: column; }
+  .search-row input, .search-row select { border-right: 1px solid rgba(255,255,255,0.12); border-bottom: none; }
+  .search-row select { border-top: 1px solid rgba(255,255,255,0.12); }
+  .search-row button { padding: 0.9rem; }
+  section { padding: 4rem 6vw; }
+  .about-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .prayer-intro { padding: 2rem; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-item { flex: 0 0 50%; }
+  footer { padding: 2.5rem 6vw; }
+  footer nav a { margin-left: 0; margin-right: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-brand" onclick="showPage('home')">Sunday <span>Holler</span></a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('directory')">Find a Church</a></li>
+    <li><a href="#" onclick="showPage('revivals')">Revivals & Events</a></li>
+    <li><a href="#" onclick="showPage('fifthsunday')">Fifth Sunday</a></li>
+    <li><a href="#" onclick="showPage('prayer')">Prayer Wall</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+  </ul>
+  <a href="#" class="nav-cta" onclick="openModal('church-modal')">Add Your Church</a>
+</nav>
+
+<!-- ════════════════ HOME PAGE ════════════════ -->
+<div id="page-home" class="page active">
+
+  <header class="hero">
+    <div class="hero-tag"><span>Claiborne · Hancock · Grainger · Union County</span></div>
+    <h1>Where the <em>Holler</em><br>Still Rings Out.</h1>
+    <p class="hero-desc">A free community directory for East Tennessee's churches. Find service times, revivals, homecomings, and gospel singings across four counties.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#" onclick="showPage('directory')">Find a Church</a>
+      <a class="btn btn-outline" href="#" onclick="showPage('revivals')">Upcoming Revivals</a>
+      <a class="btn btn-outline" href="#" onclick="showPage('fifthsunday')">Fifth Sunday Singings</a>
+    </div>
+    <div class="stat-strip">
+      <div class="stat-item"><span class="stat-num">150+</span><span class="stat-label">Listed Churches</span></div>
+      <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Counties</span></div>
+      <div class="stat-item"><span class="stat-num">87K</span><span class="stat-label">People Served</span></div>
+      <div class="stat-item"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
+    </div>
+  </header>
+
+  <!-- quick search -->
+  <div class="search-bar">
+    <span class="search-label">Search</span>
+    <div class="search-row">
+      <input type="text" id="quick-search" placeholder="Church name, community, or denomination...">
+      <select id="quick-county">
+        <option value="">All Counties</option>
+        <option value="Claiborne">Claiborne</option>
+        <option value="Hancock">Hancock</option>
+        <option value="Grainger">Grainger</option>
+        <option value="Union">Union</option>
+      </select>
+      <button onclick="showPage('directory')">Search</button>
+    </div>
+  </div>
+
+  <!-- feature highlights -->
+  <section style="background: var(--cream);">
+    <div class="section-header">
+      <span class="eyebrow">What You'll Find Here</span>
+      <h2 class="section-title serif">Built for This Corner<br>of East Tennessee</h2>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap:2px;">
+      <div class="church-card scroll-reveal" onclick="showPage('directory')" style="cursor:pointer;">
+        <div style="font-size:2rem; margin-bottom:1rem;">⛪</div>
+        <h3 class="card-name">Church Directory</h3>
+        <p class="card-info" style="margin-top:0.5rem;">Browse verified listings across four counties. Service times, denominations, contact info, and community notes all in one place.</p>
+      </div>
+      <div class="church-card scroll-reveal" onclick="showPage('revivals')" style="cursor:pointer;">
+        <div style="font-size:2rem; margin-bottom:1rem;">🔥</div>
+        <h3 class="card-name">Revivals & Events</h3>
+        <p class="card-info" style="margin-top:0.5rem;">The region's calendar for revivals, homecomings, gospel singings, and special services. All four counties in one place.</p>
+      </div>
+      <div class="church-card scroll-reveal" onclick="showPage('fifthsunday')" style="cursor:pointer;">
+        <div style="font-size:2rem; margin-bottom:1rem;">🎵</div>
+        <h3 class="card-name">Fifth Sunday Singings</h3>
+        <p class="card-info" style="margin-top:0.5rem;">The beloved Appalachian tradition tracked across all four counties. Know who's hosting before the fifth Sunday arrives.</p>
+      </div>
+      <div class="church-card scroll-reveal" onclick="showPage('prayer')" style="cursor:pointer;">
+        <div style="font-size:2rem; margin-bottom:1rem;">🙏</div>
+        <h3 class="card-name">Community Prayer Wall</h3>
+        <p class="card-info" style="margin-top:0.5rem;">Submit a prayer request or lift up one someone else has shared. Anonymous. Open to all. No account needed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- submit cta -->
+  <div class="submit-section">
+    <div>
+      <span class="eyebrow">Your Church Belongs Here</span>
+      <h2 class="section-title">Is Your Church Listed?</h2>
+      <p class="section-sub">Sunday Holler is community-built. If your congregation isn't listed yet, submit it free in about two minutes. No account required.</p>
+    </div>
+    <div class="submit-btns">
+      <a href="#" onclick="openModal('church-modal')">Add a Church Listing</a>
+      <a href="#" onclick="openModal('event-modal')">Post an Event</a>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Sunday <span>Holler</span></div>
+      <div class="footer-tagline">A community resource for East Tennessee · sundayholler.com</div>
+    </div>
+    <nav>
+      <a href="#" onclick="showPage('directory')">Directory</a>
+      <a href="#" onclick="showPage('revivals')">Events</a>
+      <a href="#" onclick="showPage('fifthsunday')">Fifth Sunday</a>
+      <a href="#" onclick="showPage('prayer')">Prayer Wall</a>
+      <a href="#" onclick="showPage('about')">About</a>
+    </nav>
+    <p style="color:rgba(255,255,255,0.2); font-size:0.75rem;">Not affiliated with any single denomination · © 2025</p>
+  </footer>
+</div>
+
+<!-- ════════════════ DIRECTORY PAGE ════════════════ -->
+<div id="page-directory" class="page">
+  <div style="padding-top: 80px; background: var(--ink); padding: 5rem 8vw 2.5rem;">
+    <span class="eyebrow" style="color:var(--gold-lt);">Church Directory</span>
+    <h1 class="serif" style="font-size:clamp(2rem,5vw,3.5rem); color:#fff; font-weight:700;">Four Counties.<br>One Community.</h1>
+    <p style="color:rgba(255,255,255,0.52); font-size:0.97rem; margin-top:0.75rem; max-width:520px; line-height:1.75;">Listings are community-maintained. If information is incorrect or your church is missing, use the submission form below.</p>
+  </div>
+
+  <div class="search-bar">
+    <span class="search-label">Filter</span>
+    <div class="search-row">
+      <input type="text" id="dir-search" placeholder="Search churches..." oninput="filterCards()">
+      <select id="dir-county" onchange="filterCards()">
+        <option value="">All Counties</option>
+        <option value="Claiborne">Claiborne</option>
+        <option value="Hancock">Hancock</option>
+        <option value="Grainger">Grainger</option>
+        <option value="Union">Union</option>
+      </select>
+      <button onclick="filterCards()">Filter</button>
+    </div>
+  </div>
+
+  <section class="churches-bg">
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="setDenom(this,'')">All</button>
+      <button class="filter-tab" onclick="setDenom(this,'Southern Baptist')">Southern Baptist</button>
+      <button class="filter-tab" onclick="setDenom(this,'Missionary Baptist')">Missionary Baptist</button>
+      <button class="filter-tab" onclick="setDenom(this,'Primitive Baptist')">Primitive Baptist</button>
+      <button class="filter-tab" onclick="setDenom(this,'Independent Baptist')">Independent Baptist</button>
+      <button class="filter-tab" onclick="setDenom(this,'Other')">Other Denominations</button>
+    </div>
+
+    <div class="cards-grid" id="cards-container">
+
+      <!-- CLAIBORNE COUNTY -->
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">First Baptist Church, New Tazewell</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 814 Buchanan Rd, New Tazewell, TN 37825</span>
+          <span>🕑 Sun School 9:15am · Worship 10:30am · Eve 6pm · Wed 6:30pm</span>
+          <span>📞 (423) 626-5401</span>
+        </div>
+        <span class="card-badge">Est. Congregation</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Tazewell Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 PO Box 818, Tazewell, TN 37879</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6:30pm · Wed 7pm</span>
+          <span>👤 Rev. JD Estep, Pastor</span>
+          <span>📞 (423) 851-4354</span>
+        </div>
+        <span class="card-badge">Tazewell Community</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Blairs Creek Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 Tazewell, TN</span>
+          <span>📞 (423) 626-7972</span>
+          <span>🕑 Sun School 10am · Worship 11am</span>
+          <span>👤 Pastor Travis Chumley</span>
+        </div>
+        <span class="card-badge">CGBA Member</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Midway Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 905 Yoakum Avenue, New Tazewell, TN 37825</span>
+          <span>📞 (423) 626-3294</span>
+          <span>🕑 Sun School 10am · Worship 11am · Sun Night 7pm · Wed Night 7pm</span>
+          <span>👤 Pastor Mitch Burke · Assoc. Pastor Kenny Trent</span>
+          <span>🌐 midwaybaptistchurchtn.com</span>
+          <span>👥 Kids in Action for Christ and Youth Ministry on Wednesday nights</span>
+          <span>📖 Daytime Bible Study 1st and 3rd Tuesday 11am to noon (all welcome)</span>
+        </div>
+        <span class="card-badge">Senior Ministry</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Haynes Flat Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 4264 TN-63, Speedwell, TN 37870</span>
+          <span>📞 (423) 869-8142</span>
+          <span>🕑 Sun School 10am · Worship 11am</span>
+          <span>👤 Pastor Travis Dunn</span>
+          <span>🎵 Choir · Children's Ministry · Youth Group · Missions</span>
+        </div>
+        <span class="card-badge">Young Families</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Indian Creek Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 PO Box 264, Harrogate, TN 37752</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm</span>
+          <span>👤 Pastor Steve Moyers</span>
+          <span>🌐 indiancreek.church</span>
+          <span>👥 Youth Group Wednesday evenings</span>
+        </div>
+        <span class="card-badge">5th Sunday Singing</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">New Salem Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 3915 Little Sycamore Road, Tazewell, TN 37879</span>
+          <span>🕑 Sun School 10am · Worship 11am</span>
+          <span>👤 Rev. Steve Barnard, Pastor</span>
+        </div>
+        <span class="card-badge">Little Sycamore Community</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Carrs Chapel Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 245 Carr Mountain Rd, Speedwell, TN 37870</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm</span>
+          <span>👤 Ethan Leach, Interim Pastor</span>
+        </div>
+        <span class="card-badge">Mountain Community</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Red Hill Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 Speedwell, TN</span>
+          <span>📞 (423) 869-3388</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 7pm · Wed 7pm</span>
+          <span>👤 Rev. Gary Mundy, Pastor</span>
+        </div>
+        <span class="card-badge">Speedwell Area</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Oak Grove Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 520 Oak Grove Church Rd, Harrogate</span>
+          <span>📞 (423) 869-8189</span>
+        </div>
+        <span class="card-badge">Harrogate Area</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">First Baptist Church, Harrogate</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 Harrogate, TN</span>
+          <span>🕑 Sun 10am · 11am · 6pm</span>
+        </div>
+        <span class="card-badge">Conservative · Lively</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Pump Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 225 Pump Springs Rd, Harrogate</span>
+          <span>📞 (423) 869-8323</span>
+        </div>
+        <span class="card-badge">Est. 30+ Years</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Cave Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info"><span>📍 Claiborne County, TN</span></div>
+        <span class="card-badge">CGBA Member</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Cedar Grove Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info"><span>📍 Claiborne County, TN</span></div>
+        <span class="card-badge">CGBA Member</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Chadwell Station Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info"><span>📍 Claiborne County, TN</span></div>
+        <span class="card-badge">CGBA Member</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Cumberland Gap First Baptist</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 319 Colwyn Ave, Cumberland Gap</span>
+          <span>📞 (423) 869-9955</span>
+        </div>
+        <span class="card-badge">Gap Community</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Dogwood Heights Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info"><span>📍 Claiborne County, TN</span></div>
+        <span class="card-badge">CGBA Member</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Fairview Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 Harrogate, TN</span>
+          <span>📞 (423) 869-0082</span>
+        </div>
+        <span class="card-badge">Harrogate Area</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Forge Ridge Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info"><span>📍 Claiborne County, TN</span></div>
+        <span class="card-badge">Ridge Community</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Greer's Chapel Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info"><span>📍 Claiborne County, TN</span></div>
+        <span class="card-badge">Chapel Community</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Head of Barren Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 New Tazewell, TN</span>
+          <span>📞 (423) 626-4799</span>
+        </div>
+        <span class="card-badge">Community Anchor</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Walnut Hill Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info"><span>📍 Claiborne County, TN</span></div>
+        <span class="card-badge">CGBA Member</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Wolfenbarger Chapel Baptist</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info"><span>📍 Claiborne County, TN</span></div>
+        <span class="card-badge">Chapel Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Independent Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Twin City Baptist Church</h3>
+        <p class="card-denom">Independent Baptist</p>
+        <div class="card-info">
+          <span>📍 412 Broad St, New Tazewell</span>
+          <span>📞 (423) 626-2674</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 5pm</span>
+        </div>
+        <span class="card-badge">All Ages Welcome</span>
+      </div>
+
+      <!-- HANCOCK COUNTY -->
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Sneedville First Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1359 Main St, Sneedville, TN</span>
+          <span>📞 (423) 733-4234</span>
+        </div>
+        <span class="card-badge">Est. 1829 · Oldest in County</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Kyles Ford Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 8059 Kyles Ford Hwy, Kyles Ford</span>
+        </div>
+        <span class="card-badge">River Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">War Creek Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 5538 Hwy 31, Sneedville</span>
+          <span>📞 (423) 733-9195</span>
+        </div>
+        <span class="card-badge">Historic Name</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Fox Branch Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 770 Fox Branch Rd, Kyles Ford</span>
+          <span>👤 Pastor Doug Gibson</span>
+        </div>
+        <span class="card-badge">Kyles Ford Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Primitive Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Riverside Primitive Baptist</h3>
+        <p class="card-denom">Primitive Baptist</p>
+        <div class="card-info">
+          <span>📍 Hwy 33, Kyles Ford</span>
+        </div>
+        <span class="card-badge">Old Order Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Alanthus Hill Baptist Church</h3>
+        <p class="card-denom">Southern Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 14129 Alanthus Hill Rd, Sneedville</span>
+          <span>📞 (423) 733-8540</span>
+        </div>
+        <span class="card-badge">Mountain Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Elm Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 Sneedville, TN</span>
+          <span>📞 (423) 733-2733</span>
+        </div>
+        <span class="card-badge">Sneedville Area</span>
+      </div>
+
+      <!-- GRAINGER COUNTY -->
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Grainger Baptist Association</h3>
+        <p class="card-denom">Southern Baptist · 32 Member Churches</p>
+        <div class="card-info">
+          <span>📍 Rutledge, TN</span>
+          <span>📞 (865) 828-4001</span>
+          <span>✉️ graingerbaptist [at] gmail.com</span>
+        </div>
+        <span class="card-badge">County Association</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Adriel Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 215 Adriel Dr, Bean Station</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm</span>
+        </div>
+        <span class="card-badge">Bean Station Area</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Helton Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 Rutledge, TN</span>
+        </div>
+        <span class="card-badge">Grainger County</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Puncheon Camp Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Washburn, TN</span>
+          <span>📞 (865) 497-2158</span>
+        </div>
+        <span class="card-badge">Missionary Heritage</span>
+      </div>
+
+      <!-- UNION COUNTY -->
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">First Baptist Maynardville</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 730 Main St, Maynardville</span>
+          <span>📞 (865) 992-3007</span>
+          <span>✉️ firstbaptistmaynardville [at] gmail.com</span>
+        </div>
+        <span class="card-badge">County Seat Church</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Alder Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 708 Hickory Star Rd, Maynardville</span>
+          <span>📞 (865) 659-0171</span>
+          <span>👤 Rev. Jimmy Davidson</span>
+        </div>
+        <span class="card-badge">Rural Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Blue Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 3145 Sharps Chapel Rd, Sharps Chapel</span>
+          <span>📞 (865) 489-0028</span>
+          <span>👤 Rev. Mika Long</span>
+        </div>
+        <span class="card-badge">Lakeside Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Taylor's Grove Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1616 Leadmine Bend Rd, Sharps Chapel</span>
+          <span>📞 (423) 626-9920</span>
+          <span>👤 Rev. Brian Liford</span>
+        </div>
+        <span class="card-badge">Sharps Chapel Area</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Hickory Valley Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 Maynardville, TN</span>
+          <span>📞 (865) 992-7789</span>
+        </div>
+        <span class="card-badge">Valley Community</span>
+      </div>
+
+
+      <!-- HANCOCK COUNTY ADDITIONAL -->
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Ida's Chapel Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist · Mulberry Gap Association</p>
+        <div class="card-info">
+          <span>📍 379 Ida's Chapel Rd, Hancock County</span>
+        </div>
+        <span class="card-badge">Chapel Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Stoney Gap Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 116 Stony Gap Rd, Sneedville</span>
+          <span>📞 (423) 733-0025</span>
+        </div>
+        <span class="card-badge">Sneedville Area</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Primitive Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Sneedville Primitive Baptist Church</h3>
+        <p class="card-denom">Primitive Baptist</p>
+        <div class="card-info">
+          <span>📍 1080 Main St, Sneedville</span>
+        </div>
+        <span class="card-badge">Old Order Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Other">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Sneedville United Methodist Church</h3>
+        <p class="card-denom">United Methodist</p>
+        <div class="card-info">
+          <span>📍 112 Jail St, Sneedville</span>
+          <span>👤 Pastor: Rev. Allen Karnes</span>
+        </div>
+        <span class="card-badge">Sneedville Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Mulberry Gap Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 5367 Mulberry Gap Rd, Sneedville</span>
+          <span>📞 (423) 733-4422</span>
+        </div>
+        <span class="card-badge">Mulberry Gap Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Duck Creek Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1987 Duck Creek Rd, Sneedville</span>
+          <span>📞 (423) 733-4166</span>
+        </div>
+        <span class="card-badge">Duck Creek Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Brewer's Chapel Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 6222 Tazewell Hwy, Sneedville</span>
+          <span>📞 (423) 733-8463</span>
+        </div>
+        <span class="card-badge">Tazewell Highway</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Mount Pisgah Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 321 Sherm Mountain Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Sherm Mountain Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Mount Zion Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1189 Mount Zion Rd, Tazewell</span>
+        </div>
+        <span class="card-badge">Thorn Hill Area</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Providence Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 463 Providence Rd, Thorn Hill</span>
+        </div>
+        <span class="card-badge">Thorn Hill Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Union Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1159 North Union Rd, Thorn Hill</span>
+        </div>
+        <span class="card-badge">Union Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Vardy Community Church</h3>
+        <p class="card-denom">Community Church</p>
+        <div class="card-info">
+          <span>📍 3845 Vardy/Blackwater Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Vardy Heritage Community</span>
+      </div>
+
+      <!-- CLAIBORNE COUNTY ADDITIONAL -->
+      <div class="church-card" data-county="Claiborne" data-denom="Missionary Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Seal Chapel Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 480 Seal Chapel Rd, Tazewell</span>
+          <span>📍 Off Hwy 33, approx. 6 miles from US 25E junction</span>
+        </div>
+        <span class="card-badge">Historic Seals Family Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Primitive Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Big Springs Primitive Baptist Church</h3>
+        <p class="card-denom">Primitive Baptist</p>
+        <div class="card-info">
+          <span>📍 155 Lone Mountain Rd, Tazewell</span>
+          <span>🎵 Singing 2nd Saturday of each month at 6:30pm</span>
+        </div>
+        <span class="card-badge">Monthly Singings</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Missionary Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Riley Memorial Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 Tazewell, TN</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm</span>
+        </div>
+        <span class="card-badge">CGBA Member</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Other">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">The Hill Church</h3>
+        <p class="card-denom">Nondenominational</p>
+        <div class="card-info">
+          <span>📍 1216 Cedar Fork Rd, Tazewell</span>
+          <span>📞 (423) 526-5655</span>
+          <span>👥 Three18 Youth Tuesdays at 5:30pm</span>
+        </div>
+        <span class="card-badge">Community Focused</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Missionary Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Liberty Missionary Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Claiborne County, TN</span>
+          <span>👤 Rev. Kenny Clark, Pastor</span>
+        </div>
+        <span class="card-badge">Monthly Singings</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Other">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Sunrise Missionary Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Claiborne County, TN</span>
+          <span>🎵 Regular monthly singings at 6pm</span>
+        </div>
+        <span class="card-badge">Gospel Singing Ministry</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Other">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Living Hope Church</h3>
+        <p class="card-denom">Nondenominational</p>
+        <div class="card-info">
+          <span>📍 347 Shawanee Rd, Harrogate</span>
+        </div>
+        <span class="card-badge">Women's Ministry</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Other">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Cedar Fork Baptist Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 801 Cedar Fork Rd, Tazewell</span>
+        </div>
+        <span class="card-badge">Cedar Fork Community</span>
+      </div>
+
+      <!-- GRAINGER COUNTY ADDITIONAL -->
+      <div class="church-card" data-county="Grainger" data-denom="Other">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Barnard's Grove Church</h3>
+        <p class="card-denom">Nondenominational</p>
+        <div class="card-info">
+          <span>📍 Bean Station, TN</span>
+        </div>
+        <span class="card-badge">Bean Station Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Other">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Living Waters Church of God</h3>
+        <p class="card-denom">Church of God</p>
+        <div class="card-info">
+          <span>📍 Rutledge, TN</span>
+        </div>
+        <span class="card-badge">Spirit Filled Worship</span>
+      </div>
+
+      <!-- UNION COUNTY ADDITIONAL -->
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">The Journey Church</h3>
+        <p class="card-denom">Nondenominational</p>
+        <div class="card-info">
+          <span>📍 Maynardville, TN</span>
+        </div>
+        <span class="card-badge">Gospel Centered</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Union Chapel Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Maynardville, TN</span>
+        </div>
+        <span class="card-badge">Bible Believing Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Revival Vision Church of God</h3>
+        <p class="card-denom">Church of God</p>
+        <div class="card-info">
+          <span>📍 Maynardville, TN</span>
+        </div>
+        <span class="card-badge">Worship and Outreach</span>
+      </div>
+
+
+      <!-- HANCOCK COUNTY ADDITIONAL BATCH 2 -->
+      <div class="church-card" data-county="Hancock" data-denom="Other">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">New Tazewell Pentecostal Church</h3>
+        <p class="card-denom">Pentecostal</p>
+        <div class="card-info">
+          <span>📍 New Tazewell, TN</span>
+        </div>
+        <span class="card-badge">Spirit Filled Worship</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Briar Creek Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 174 Mabe Hollow Rd, Sneedville</span>
+          <span>📞 (423) 733-9995</span>
+        </div>
+        <span class="card-badge">Mabe Hollow Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Cool Branch Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 3251 Copper Ridge Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Copper Ridge Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Swan Creek Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 2226 Swan Creek Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Swan Creek Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Trent Valley Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 2276 Trent Valley Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Trent Valley Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Pawpaw Grove Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 2777 Pawpaw Rd, Thorn Hill</span>
+        </div>
+        <span class="card-badge">Thorn Hill Area</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Rock Bridge Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 423 Rock Bridge Rd, Thorn Hill</span>
+        </div>
+        <span class="card-badge">Thorn Hill Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Chinquipin Grove Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 5333 Chinquipin Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Chinquipin Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Livesay's Chapel Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 895 Livesay Chapel Rd, Kyles Ford</span>
+        </div>
+        <span class="card-badge">Kyles Ford Area</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Martin's Creek Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 3486 Powell River Rd, Tazewell</span>
+        </div>
+        <span class="card-badge">Powell River Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Sulfur Springs Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Vardy Blackwater Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Vardy Valley Area</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Unicoi Chapel Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 7920 Chestnut Ridge Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Chestnut Ridge Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Primitive Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Union Hill Primitive Baptist</h3>
+        <p class="card-denom">Primitive Baptist</p>
+        <div class="card-info">
+          <span>📍 4401 Panther Creek Rd, Thorn Hill</span>
+        </div>
+        <span class="card-badge">Old Order Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Wallen's Bend Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 1913 Horton Ford Rd, Eidson</span>
+        </div>
+        <span class="card-badge">Eidson Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Yellow Branch Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 446 Yellow Branch Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Yellow Branch Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Willis Chapel Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 10025 Kyles Ford Hwy, Kyles Ford</span>
+        </div>
+        <span class="card-badge">Kyles Ford Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Sandy Springs Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 1061 West Short Mountain Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Short Mountain Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Goins Chapel Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 1648 Prospect Rd, Sneedville</span>
+          <span>👤 Pastor: Don Crider</span>
+        </div>
+        <span class="card-badge">Prospect Road Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Gaps Chapel Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 871 Gaps Chapel Rd, Sneedville</span>
+          <span>📞 (423) 733-8463</span>
+        </div>
+        <span class="card-badge">Gaps Chapel Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Faith Freedom Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 1326 Back Valley Rd, Sneedville</span>
+          <span>👤 Pastor: Alonzo Collins</span>
+        </div>
+        <span class="card-badge">Back Valley Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Davis Chapel Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 216 Davis Chapel Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Davis Chapel Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Chestnut Grove Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 185 Riley Rd, Eidson</span>
+        </div>
+        <span class="card-badge">Eidson Area</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Big Creek Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 2824 Big Creek Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Big Creek Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Flat Gap Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 260 Wolfe Circle, Treadway</span>
+        </div>
+        <span class="card-badge">Treadway Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Missionary Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Friendlies Chapel Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 777 Rhea Hollow Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">Rhea Hollow Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">Mullins Chapel Church</h3>
+        <p class="card-denom">Baptist</p>
+        <div class="card-info">
+          <span>📍 110 Hillside Dr, Sneedville</span>
+          <span>👤 Pastor: Wes Bledsoe</span>
+        </div>
+        <span class="card-badge">Sneedville Community</span>
+      </div>
+
+      <div class="church-card" data-county="Hancock" data-denom="Southern Baptist">
+        <p class="card-county">Hancock County</p>
+        <h3 class="card-name">New Hope Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 2756 New Hope Rd, Sneedville</span>
+        </div>
+        <span class="card-badge">New Hope Community</span>
+      </div>
+
+      <!-- CLAIBORNE COUNTY ADDITIONAL BATCH 2 -->
+      <div class="church-card" data-county="Claiborne" data-denom="Other">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">New Tazewell Pentecostal Church</h3>
+        <p class="card-denom">Pentecostal</p>
+        <div class="card-info">
+          <span>📍 New Tazewell, TN</span>
+        </div>
+        <span class="card-badge">Spirit Filled Worship</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Missionary Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Mt. Pleasant Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 1250 Pine Hill Rd, Claiborne County</span>
+          <span>👤 Rev. Terry Herrell, Pastor</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm</span>
+        </div>
+        <span class="card-badge">Pine Hill Community</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Southern Baptist">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Springdale Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist · CGBA Member</p>
+        <div class="card-info">
+          <span>📍 Tazewell, TN</span>
+        </div>
+        <span class="card-badge">CGBA Member</span>
+      </div>
+
+      <!-- UNION COUNTY ADDITIONAL -->
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">New Fellowship Full Gospel Church</h3>
+        <p class="card-denom">Full Gospel</p>
+        <div class="card-info">
+          <span>📍 Maynardville, TN</span>
+        </div>
+        <span class="card-badge">Full Gospel Ministry</span>
+      </div>
+
+
+      <!-- GRAINGER COUNTY FULL DIRECTORY EXPANSION -->
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Bean Station First Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 5980 Highway 11W S, Bean Station</span>
+          <span>🕑 Sun School 10am · Worship 11am · 1st and 3rd Sun Eve 6pm · Wed 7pm</span>
+          <span>👤 Pastor Derek Drummonds</span>
+        </div>
+        <span class="card-badge">Bean Station Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Block Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 269 Emory Road, Blaine</span>
+          <span>🕑 Sun School 10am · Worship 11am · Wed 6pm</span>
+          <span>👤 Pastor Wayne Peace</span>
+        </div>
+        <span class="card-badge">Blaine Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Blue Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 956 Highway 92, Rutledge</span>
+          <span>🕑 Sun School 9:30am · Worship 10:45am · Wed 6:30pm</span>
+          <span>👤 Pastor Jared Norris</span>
+        </div>
+        <span class="card-badge">Rutledge Area</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Buffalo Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 8458 Indian Ridge Road, Rutledge</span>
+          <span>📞 (865) 828-8516</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm</span>
+          <span>👤 Pastor Mike Lee</span>
+        </div>
+        <span class="card-badge">Indian Ridge Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Calvary Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 126 Calvary Church Road, Mooresburg</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm</span>
+          <span>👤 Pastor Tom Wells</span>
+        </div>
+        <span class="card-badge">Mooresburg Area</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Central Point Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1855 Central Point Road, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm</span>
+          <span>👤 Pastor Lee Brickey</span>
+        </div>
+        <span class="card-badge">Central Point Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Head of Richland Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 240 Avondale Road, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm</span>
+          <span>👤 Pastor Larry Davis</span>
+        </div>
+        <span class="card-badge">Avondale Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Indian Ridge Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 4900 Indian Ridge Road, Blaine</span>
+          <span>🕑 Sun School 9:45am · Worship 10:45am · Wed 7pm</span>
+          <span>👤 Pastor Luke Kidwell</span>
+        </div>
+        <span class="card-badge">Blaine Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Lea Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1190 Rutledge Pike, Blaine</span>
+          <span>🕑 Sun School 9:30am · Worship 10:30am · Eve 6pm · Wed 7pm</span>
+          <span>👤 Pastor Paul Owens</span>
+        </div>
+        <span class="card-badge">Blaine Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Liberty Hill Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 581 Liberty Hill Road, Washburn</span>
+          <span>🕑 Sun School 10am · Worship 11am · Singing 7pm</span>
+          <span>👤 Pastor Jamie Williams</span>
+        </div>
+        <span class="card-badge">Washburn Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Locust Grove Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 11507 Locust Grove Road, Washburn</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm</span>
+          <span>👤 Pastor Chuck Beeler</span>
+        </div>
+        <span class="card-badge">Washburn Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Mitchell Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1469 Roach Road, Rutledge</span>
+          <span>🕑 Sun School 9:45am · Worship 10:45am · Eve 6pm · Wed 6:30pm</span>
+          <span>👤 Pastor Kim Farrow</span>
+        </div>
+        <span class="card-badge">Rutledge Area</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Missionary Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Mount Eager Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 1685 Hogskin Road, Washburn</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm</span>
+          <span>👤 Pastor Jason Nicely</span>
+        </div>
+        <span class="card-badge">Washburn Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Richland Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1115 Indian Ridge Road, Blaine</span>
+          <span>📞 (865) 933-5483</span>
+          <span>🕑 Worship 8:45am and 11am</span>
+          <span>👤 Pastor Nick Wright</span>
+        </div>
+        <span class="card-badge">Est. 1788 · Oldest in Grainger County</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Narrow Valley Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 Grainger County, TN</span>
+          <span>🕑 Sun School 10am · Worship 11am · Singing 6:30pm</span>
+          <span>👤 Pastor Jason Sexton</span>
+        </div>
+        <span class="card-badge">Valley Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">New Blackwell Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 210 Blackwell Branch Road, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 7pm · Wed 7pm</span>
+          <span>👤 Pastor Randy Morgan</span>
+        </div>
+        <span class="card-badge">Blackwell Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">New Corinth Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 2570 New Corinth Road, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 10:45am · Eve 6:45pm · Wed 7pm</span>
+          <span>🎵 5th Sunday Singing at 7pm</span>
+          <span>👤 Pastor Bryan Collins</span>
+        </div>
+        <span class="card-badge">5th Sunday Singing</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">New Prospect Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 6320 Lakeshore Road, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6:30pm · Wed 7pm</span>
+          <span>🎵 5th Sunday Singing at 7pm</span>
+          <span>👤 Pastor Lowell Welch</span>
+        </div>
+        <span class="card-badge">5th Sunday Singing</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Missionary Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Noeton Missionary Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 359 Newman Hollow Road, Bean Station</span>
+          <span>🕑 Sun School 9:45am · Worship 10:45am · Eve 6:30pm · Wed 6:30pm</span>
+          <span>👤 Pastor Billy Couch</span>
+        </div>
+        <span class="card-badge">Bean Station Area</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Oakland Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 15050 Lakeshore Drive, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 11am · Wed 6:30pm</span>
+          <span>👤 Pastor Stacey Lawson</span>
+        </div>
+        <span class="card-badge">Lakeshore Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Powder Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 179 Zachery Ridge Road, Washburn</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm</span>
+          <span>🎵 5th Sunday Singing at 6pm</span>
+          <span>👤 Pastor Darrell Williams</span>
+        </div>
+        <span class="card-badge">5th Sunday Singing</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Red House Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 168 Red House Road, Blaine</span>
+          <span>🕑 Sun School 10am · Worship 11am</span>
+          <span>👤 Pastor Gary White</span>
+        </div>
+        <span class="card-badge">Blaine Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Southside Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 370 Highway 92, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm</span>
+          <span>👤 Pastor Vernon Dalton</span>
+        </div>
+        <span class="card-badge">Rutledge Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Sunrise Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 208 Hammer Road, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 11am · Wed 6:30pm</span>
+          <span>👤 Pastor Scott Howerton</span>
+        </div>
+        <span class="card-badge">Rutledge Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Southern Baptist">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">Tampico Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 405 Tampico Church Road, Rutledge</span>
+          <span>🕑 Sun School 10am · Worship 11am · Wed 7pm</span>
+          <span>👤 Pastor Tom Seaman</span>
+        </div>
+        <span class="card-badge">Tampico Community</span>
+      </div>
+
+      <div class="church-card" data-county="Grainger" data-denom="Other">
+        <p class="card-county">Grainger County</p>
+        <h3 class="card-name">The Church at Rutledge</h3>
+        <p class="card-denom">Nondenominational</p>
+        <div class="card-info">
+          <span>📍 220 Robbins Road, Rutledge</span>
+          <span>🕑 Worship 10:45am</span>
+          <span>👤 Pastor Marty Shelton</span>
+        </div>
+        <span class="card-badge">Contemporary Worship</span>
+      </div>
+
+      <!-- UNION COUNTY FULL EXPANSION -->
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Maynardville Church of Christ</h3>
+        <p class="card-denom">Church of Christ</p>
+        <div class="card-info">
+          <span>📍 Hickory Valley Road, Maynardville</span>
+        </div>
+        <span class="card-badge">Church of Christ</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Sharps Chapel Christian Church</h3>
+        <p class="card-denom">Christian Church</p>
+        <div class="card-info">
+          <span>📍 Sharps Chapel, TN</span>
+        </div>
+        <span class="card-badge">Sharps Chapel Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">New Testament Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 9325 Maynardville Hwy, Maynardville</span>
+          <span>📞 (865) 922-8366</span>
+        </div>
+        <span class="card-badge">Maynardville Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Valley Grove Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 Hickory Valley Road, Maynardville</span>
+          <span>👤 Rev. Kyle Shell, Pastor</span>
+        </div>
+        <span class="card-badge">Valley Grove Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Walnut Grove Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 Hinds Creek Road, Maynardville</span>
+        </div>
+        <span class="card-badge">Hinds Creek Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Willow Springs Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 Highway 61 East, Luttrell</span>
+          <span>📞 (865) 992-3796</span>
+        </div>
+        <span class="card-badge">Luttrell Area</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Nave Hill Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 1805 Walker Ford Road, Maynardville</span>
+          <span>📞 (865) 256-9086</span>
+          <span>👤 Rev. Robert West, Pastor</span>
+        </div>
+        <span class="card-badge">Walker Ford Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Fairview Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 974 Tater Valley Road, Luttrell</span>
+          <span>📞 (865) 992-4614</span>
+          <span>👤 Rev. Jason L. Walker, Pastor</span>
+        </div>
+        <span class="card-badge">Tater Valley Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Southern Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Hubbs Grove Baptist Church</h3>
+        <p class="card-denom">Southern Baptist</p>
+        <div class="card-info">
+          <span>📍 Hubbs Grove Road, Maynardville</span>
+          <span>📞 (865) 992-3487</span>
+          <span>👤 Rev. Robbie Corum, Pastor</span>
+        </div>
+        <span class="card-badge">Maynardville Area</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Christ the King Catholic Church</h3>
+        <p class="card-denom">Catholic</p>
+        <div class="card-info">
+          <span>📍 816 Blue Top Road, Tazewell</span>
+          <span>📞 (423) 562-0312</span>
+          <span>🕑 Sunday Mass 12 noon · Thursday 10am</span>
+        </div>
+        <span class="card-badge">Est. 1984</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">St. Teresa of Kolkata Catholic Church</h3>
+        <p class="card-denom">Catholic</p>
+        <div class="card-info">
+          <span>📍 Maynardville, TN</span>
+          <span>👤 Father Steve Pawelk, Pastor</span>
+        </div>
+        <span class="card-badge">Maynardville Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Chapel of the Good Shepherd</h3>
+        <p class="card-denom">Lutheran</p>
+        <div class="card-info">
+          <span>📍 681 Sharps Chapel Road, Sharps Chapel</span>
+          <span>👤 Pastor Paul Kritsch</span>
+        </div>
+        <span class="card-badge">Sharps Chapel Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">First Church of God</h3>
+        <p class="card-denom">Church of God</p>
+        <div class="card-info">
+          <span>📍 Maynardville, TN</span>
+        </div>
+        <span class="card-badge">Maynardville Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Mountain View Church of God</h3>
+        <p class="card-denom">Church of God</p>
+        <div class="card-info">
+          <span>📍 Tazewell Pike, Maynardville</span>
+        </div>
+        <span class="card-badge">Ridge Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Trinity Reigns Worship Center</h3>
+        <p class="card-denom">Nondenominational</p>
+        <div class="card-info">
+          <span>📍 600 John Deere Drive, Maynardville</span>
+          <span>👤 Pastor Gordon McMahan</span>
+        </div>
+        <span class="card-badge">Praise and Worship</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Ailordale Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Beard Valley Road, Maynardville</span>
+        </div>
+        <span class="card-badge">Beard Valley Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Beulah Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Raccoon Valley Road, Maynardville</span>
+          <span>👤 Rev. Larry Cooper, Pastor</span>
+        </div>
+        <span class="card-badge">Raccoon Valley Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Blaines Chapel Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Tazewell Pike, Maynardville</span>
+        </div>
+        <span class="card-badge">Tazewell Pike Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Hines Creek Missionary Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Hines Creek Road, Maynardville</span>
+        </div>
+        <span class="card-badge">Hines Creek Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Milan Baptist Church</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 1101 Maynardville Highway, Maynardville</span>
+          <span>📞 (865) 992-8128</span>
+          <span>👤 Rev. Jody Winstead, Pastor</span>
+        </div>
+        <span class="card-badge">Maynardville Highway</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Pennington Chapel Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Washburn, TN</span>
+        </div>
+        <span class="card-badge">Washburn Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Raccoon Valley Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Maynardville, TN</span>
+        </div>
+        <span class="card-badge">Raccoon Valley Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Missionary Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Warwick's Chapel Baptist</h3>
+        <p class="card-denom">Missionary Baptist</p>
+        <div class="card-info">
+          <span>📍 Luttrell, TN</span>
+        </div>
+        <span class="card-badge">Luttrell Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Primitive Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Braden Chapel Primitive Baptist</h3>
+        <p class="card-denom">Primitive Baptist</p>
+        <div class="card-info">
+          <span>📍 Speedwell, TN</span>
+        </div>
+        <span class="card-badge">Old Order Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Primitive Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Dotson's Creek Primitive Baptist</h3>
+        <p class="card-denom">Primitive Baptist</p>
+        <div class="card-info">
+          <span>📍 Washburn, TN</span>
+        </div>
+        <span class="card-badge">Old Order Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Primitive Baptist">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Union Primitive Baptist Church</h3>
+        <p class="card-denom">Primitive Baptist</p>
+        <div class="card-info">
+          <span>📍 Sharps Chapel, TN</span>
+        </div>
+        <span class="card-badge">Old Order Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Hansard Chapel United Methodist</h3>
+        <p class="card-denom">United Methodist</p>
+        <div class="card-info">
+          <span>📍 Highway 33, Maynardville</span>
+        </div>
+        <span class="card-badge">Methodist Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Irwin's Chapel United Methodist</h3>
+        <p class="card-denom">United Methodist</p>
+        <div class="card-info">
+          <span>📍 Sharps Chapel, TN</span>
+        </div>
+        <span class="card-badge">Sharps Chapel Community</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Miller's Chapel United Methodist</h3>
+        <p class="card-denom">United Methodist</p>
+        <div class="card-info">
+          <span>📍 Highway 33, Maynardville</span>
+        </div>
+        <span class="card-badge">Methodist Heritage</span>
+      </div>
+
+      <div class="church-card" data-county="Union" data-denom="Other">
+        <p class="card-county">Union County</p>
+        <h3 class="card-name">Pleasant Grove United Methodist</h3>
+        <p class="card-denom">United Methodist</p>
+        <div class="card-info">
+          <span>📍 Luttrell, TN</span>
+        </div>
+        <span class="card-badge">Luttrell Community</span>
+      </div>
+
+      <!-- CLAIBORNE COUNTY ADDITIONAL -->
+      <div class="church-card" data-county="Claiborne" data-denom="Other">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Tazewell United Methodist Church</h3>
+        <p class="card-denom">United Methodist</p>
+        <div class="card-info">
+          <span>📍 1704 Main St, Tazewell</span>
+          <span>📞 (423) 626-2881</span>
+          <span>🕑 Sunday Worship 11am</span>
+        </div>
+        <span class="card-badge">Tazewell Community</span>
+      </div>
+
+      <div class="church-card" data-county="Claiborne" data-denom="Other">
+        <p class="card-county">Claiborne County</p>
+        <h3 class="card-name">Tazewell Church of Christ</h3>
+        <p class="card-denom">Church of Christ</p>
+        <div class="card-info">
+          <span>📍 1605 Tazewell Rd, Tazewell</span>
+          <span>📞 (423) 626-3383</span>
+        </div>
+        <span class="card-badge">Church of Christ</span>
+      </div>
+
+      <!-- ADD YOUR CHURCH CARD -->
+      <div class="church-card card-add">
+        <p>Is your church missing?</p>
+        <small>Submit a listing. Free, takes 2 minutes.</small>
+        <a class="btn btn-dark" href="#" onclick="openModal('church-modal')" style="font-size:0.72rem; padding:0.7rem 1.5rem;">Add a Church</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Sunday <span>Holler</span></div>
+      <div class="footer-tagline">sundayholler.com · East Tennessee</div>
+    </div>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('revivals')">Events</a>
+      <a href="#" onclick="showPage('about')">About</a>
+    </nav>
+    <p style="color:rgba(255,255,255,0.2); font-size:0.75rem;">© 2025 · Not affiliated with any denomination</p>
+  </footer>
+</div>
+
+<!-- ════════════════ REVIVALS PAGE ════════════════ -->
+<div id="page-revivals" class="page">
+  <div style="padding: 7rem 8vw 3rem; background: var(--ink);">
+    <span class="eyebrow" style="color:var(--gold-lt);">Community Calendar</span>
+    <h1 class="serif" style="font-size:clamp(2rem,5vw,3.5rem); color:#fff; font-weight:700;">Revivals, Homecomings<br>& Gospel Singings</h1>
+    <p style="color:rgba(255,255,255,0.5); font-size:0.97rem; margin-top:0.75rem; max-width:520px; line-height:1.75;">The heartbeat of East Tennessee church life. All four counties, updated by the community. Submit your event below.</p>
+  </div>
+
+  <section class="revival-section">
+    <div class="events-grid">
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Apr</span>
+          <span class="event-day">06</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Spring Revival: Week One</div>
+        <div class="event-church">Sneedville First Baptist · Hancock County</div>
+        <div class="event-desc">Nightly services at 7pm Sunday through Friday. Guest preacher from the Holston Valley Association. All are welcome. No membership required.</div>
+        <span class="event-type type-revival">Revival</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Apr</span>
+          <span class="event-day">13</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Easter Sunrise Service</div>
+        <div class="event-church">Carrs Chapel Baptist · Claiborne County</div>
+        <div class="event-desc">Outdoor service beginning at 6:30am on the church grounds, weather permitting. Covered dish breakfast to follow. Bring a dish and a lawn chair.</div>
+        <span class="event-type type-special">Special Service</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Apr</span>
+          <span class="event-day">20</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Annual Homecoming & Singing</div>
+        <div class="event-church">Adriel Baptist Church · Grainger County</div>
+        <div class="event-desc">Annual homecoming weekend with guest quartets, dinner on the grounds Sunday after morning service, and an afternoon gospel singing starting at 2pm.</div>
+        <span class="event-type type-homecoming">Homecoming</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Apr</span>
+          <span class="event-day">27</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Fifth Sunday Gospel Singing</div>
+        <div class="event-church">Indian Creek Baptist · Claiborne County</div>
+        <div class="event-desc">The fourth fifth-Sunday singing of the year hosted by Indian Creek Baptist. Open to all churches. Bring your choir or come to listen. 2pm start.</div>
+        <span class="event-type type-singing">Fifth Sunday Singing</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">May</span>
+          <span class="event-day">03</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Community Prayer Breakfast</div>
+        <div class="event-church">First Baptist Maynardville · Union County</div>
+        <div class="event-desc">Open to all believers across the county. Breakfast served at 7:30am, followed by a time of community prayer and testimony. No charge.</div>
+        <span class="event-type type-special">Community</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">May</span>
+          <span class="event-day">11</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Spring Homecoming</div>
+        <div class="event-church">War Creek Baptist · Hancock County</div>
+        <div class="event-desc">Annual spring homecoming with former members returning. Gospel music in the morning, dinner on the grounds at noon, afternoon service at 2pm.</div>
+        <span class="event-type type-homecoming">Homecoming</span>
+      </div>
+
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Jun</span>
+          <span class="event-day">07</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Vardy Days Community Celebration</div>
+        <div class="event-church">Vardy Community · Hancock County</div>
+        <div class="event-desc">Annual Vardy Days held the first Saturday in June. Community gathering honoring the heritage and history of the Vardy Valley community. Music, food, and fellowship.</div>
+        <span class="event-type type-special">Community</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Aug</span>
+          <span class="event-day">09</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Second Saturday Night Singing</div>
+        <div class="event-church">Big Springs Primitive Baptist · Claiborne County</div>
+        <div class="event-desc">Big Springs Primitive Baptist holds a gospel singing on the second Saturday night of every month at 6:30pm. 155 Lone Mountain Road, Tazewell. Everyone welcome.</div>
+        <span class="event-type type-singing">Monthly Singing</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Oct</span>
+          <span class="event-day">04</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">43rd Annual Mountain Memories Fall Festival</div>
+        <div class="event-church">Sneedville Area · Hancock County</div>
+        <div class="event-desc">10am until 6pm. No admission charge. Food and craft vendors throughout the day. A community tradition for over four decades. Fun for the whole family.</div>
+        <span class="event-type type-special">Community Festival</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Oct</span>
+          <span class="event-day">05</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Annual Fall Festival</div>
+        <div class="event-church">Sneedville Community · Hancock County</div>
+        <div class="event-desc">First Saturday and Sunday in October. Community wide fall festival in Sneedville. Churches throughout the county participate with food, music, and fellowship.</div>
+        <span class="event-type type-special">Community</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Dec</span>
+          <span class="event-day">06</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">OverHome Christmas Parade</div>
+        <div class="event-church">Sneedville Main Street · Hancock County</div>
+        <div class="event-desc">First Saturday in December. The beloved OverHome Christmas Parade through Sneedville draws the whole county together to celebrate the season. Churches march and sing.</div>
+        <span class="event-type type-special">Community</span>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <span class="event-month">Apr</span>
+          <span class="event-day">26</span>
+          <span class="event-year">2025</span>
+        </div>
+        <div class="event-title">Spring Fest</div>
+        <div class="event-church">Sneedville Area · Hancock County</div>
+        <div class="event-desc">Last Saturday in April. Annual spring community festival with food, music, and vendors. Churches and community organizations participate throughout the day.</div>
+        <span class="event-type type-special">Community</span>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:3rem;">
+      <a class="btn btn-primary" href="#" onclick="openModal('event-modal')">Submit an Event</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Sunday <span>Holler</span></div>
+      <div class="footer-tagline">sundayholler.com</div>
+    </div>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('directory')">Directory</a>
+      <a href="#" onclick="showPage('fifthsunday')">Fifth Sunday</a>
+    </nav>
+    <p style="color:rgba(255,255,255,0.2); font-size:0.75rem;">© 2025</p>
+  </footer>
+</div>
+
+<!-- ════════════════ FIFTH SUNDAY PAGE ════════════════ -->
+<div id="page-fifthsunday" class="page">
+  <div style="padding: 7rem 8vw 3rem; background: var(--ink);">
+    <span class="eyebrow" style="color:var(--gold-lt);">Appalachian Tradition</span>
+    <h1 class="serif" style="font-size:clamp(2rem,5vw,3.5rem); color:#fff; font-weight:700;">Fifth Sunday<br>Gospel Singings</h1>
+  </div>
+
+  <section class="fifth-section">
+    <div class="fifth-explainer">
+      <p><strong>What is a Fifth Sunday Singing?</strong> Four times a year, any month with five Sundays becomes an occasion for community worship across Appalachian churches. By tradition, a different congregation hosts each time, opening their doors to singers and listeners from every church in the area, regardless of denomination. It's one of the oldest and most beloved expressions of community faith in East Tennessee ridge country.</p>
+    </div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-glyph">✦</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <h3 class="serif" style="font-size:1.4rem; color:var(--ink); font-weight:700; margin-bottom:1.5rem;">2025 Fifth Sundays</h3>
+    <p style="font-size:0.85rem; color:#888; margin-bottom:2rem;">Fifth Sundays fall on: <strong>March 30, June 29, August 31, November 30</strong></p>
+
+    <div class="fifth-grid">
+      <div class="fifth-card">
+        <div class="fifth-date">March 30, 2025</div>
+        <div class="fifth-church">Indian Creek Baptist Church</div>
+        <div class="fifth-county">Claiborne County</div>
+        <div class="fifth-detail">Service begins at 2:00 PM. Open to all churches and denominations. Come to sing or come to listen. All are welcome.</div>
+        <span class="card-badge" style="margin-top:1rem; display:inline-block;">Confirmed Host</span>
+      </div>
+
+      <div class="fifth-card">
+        <div class="fifth-date">June 29, 2025</div>
+        <div class="fifth-church">Host Church TBD</div>
+        <div class="fifth-county">Hancock County · Rotating</div>
+        <div class="fifth-detail">Host for June not yet confirmed. Submit your church if you'd like to host or know who is. We'll update as soon as information is received.</div>
+        <span class="card-badge" style="margin-top:1rem; display:inline-block;">Unconfirmed</span>
+      </div>
+
+      <div class="fifth-card">
+        <div class="fifth-date">August 31, 2025</div>
+        <div class="fifth-church">Host Church TBD</div>
+        <div class="fifth-county">Grainger County · Rotating</div>
+        <div class="fifth-detail">August host not yet confirmed. Do you know who's hosting? Submit the information and help keep the community informed.</div>
+        <span class="card-badge" style="margin-top:1rem; display:inline-block;">Unconfirmed</span>
+      </div>
+
+      <div class="fifth-card">
+        <div class="fifth-date">November 30, 2025</div>
+        <div class="fifth-church">Host Church TBD</div>
+        <div class="fifth-county">Union County · Rotating</div>
+        <div class="fifth-detail">November fifth Sunday is the close of the year. Host and details to be confirmed. Check back or submit an update.</div>
+        <span class="card-badge" style="margin-top:1rem; display:inline-block;">Unconfirmed</span>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem; padding:2rem; background:var(--ink); display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center; justify-content:space-between;">
+      <div>
+        <p class="eyebrow" style="color:var(--gold-lt);">Know Something We Don't?</p>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; max-width:400px; line-height:1.75;">If your church is hosting a fifth Sunday singing or you know who is, submit it here. This page stays current because the community keeps it current.</p>
+      </div>
+      <a class="btn btn-primary" href="#" onclick="openModal('event-modal')">Submit a Fifth Sunday</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Sunday <span>Holler</span></div>
+      <div class="footer-tagline">sundayholler.com</div>
+    </div>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('directory')">Directory</a>
+      <a href="#" onclick="showPage('revivals')">Events</a>
+    </nav>
+    <p style="color:rgba(255,255,255,0.2); font-size:0.75rem;">© 2025</p>
+  </footer>
+</div>
+
+<!-- ════════════════ PRAYER WALL PAGE ════════════════ -->
+<div id="page-prayer" class="page">
+  <div style="padding: 7rem 8vw 3rem; background: var(--ink);">
+    <span class="eyebrow" style="color:var(--gold-lt);">Community Prayer Wall</span>
+    <h1 class="serif" style="font-size:clamp(2rem,5vw,3.5rem); color:#fff; font-weight:700;">Lift Each Other Up.</h1>
+  </div>
+
+  <section class="prayer-section">
+    <div class="prayer-intro">
+      <div>
+        <h3>Where the community <em>prays together.</em></h3>
+        <p>Submit a prayer request anonymously or with your name. No account, no login. Every request is seen and carried by the community. Check back to see requests answered.</p>
+      </div>
+      <div class="prayer-form">
+        <input type="text" placeholder="Your name (optional, or leave blank for Anonymous)">
+        <select>
+          <option>Prayer Request Type</option>
+          <option>Health & Healing</option>
+          <option>Family</option>
+          <option>Grief & Loss</option>
+          <option>Financial Need</option>
+          <option>Salvation</option>
+          <option>General</option>
+          <option>Praise Report</option>
+        </select>
+        <textarea placeholder="Share your prayer request here..."></textarea>
+        <button class="btn btn-primary" style="border:none; cursor:pointer; letter-spacing:0.14em; text-transform:uppercase; font-size:0.78rem; font-weight:700; font-family:'DM Sans',sans-serif;">Submit Request</button>
+      </div>
+    </div>
+
+    <div class="prayers-grid">
+      <div class="prayer-card urgent">
+        <div class="prayer-category">🙏 Health & Healing</div>
+        <div class="prayer-text">"Please pray for my father. He's in the hospital in Knoxville and the family is gathering. We trust the Lord but we covet your prayers."</div>
+        <div class="prayer-meta">Submitted by <strong>A Hancock County Family</strong> · 2 days ago</div>
+      </div>
+
+      <div class="prayer-card">
+        <div class="prayer-category">👨‍👩‍👧 Family</div>
+        <div class="prayer-text">"Pray for my son and his wife. They're going through a hard season and need the Lord's guidance and peace over their home."</div>
+        <div class="prayer-meta">Submitted by <strong>Anonymous</strong> · 4 days ago</div>
+      </div>
+
+      <div class="prayer-card answered">
+        <div class="prayer-category">✅ Praise Report: Answered</div>
+        <div class="prayer-text">"I asked for prayer about my job situation two weeks ago. The Lord provided. Thank you to everyone who prayed. He is faithful."</div>
+        <div class="prayer-meta">Submitted by <strong>A Claiborne County Member</strong> · 1 week ago</div>
+      </div>
+
+      <div class="prayer-card">
+        <div class="prayer-category">🙏 Salvation</div>
+        <div class="prayer-text">"Please pray for my neighbor. He's a good man but he doesn't know the Lord. I've been trying to be a light. Pray the Holy Spirit would work on his heart."</div>
+        <div class="prayer-meta">Submitted by <strong>Anonymous</strong> · 1 week ago</div>
+      </div>
+
+      <div class="prayer-card">
+        <div class="prayer-category">💔 Grief & Loss</div>
+        <div class="prayer-text">"We lost our grandmother last Thursday. She was a pillar of our church for 60 years. Pray for the family as we grieve and celebrate her life."</div>
+        <div class="prayer-meta">Submitted by <strong>The Bowman Family</strong> · 2 weeks ago</div>
+      </div>
+
+      <div class="prayer-card answered">
+        <div class="prayer-category">✅ Praise Report: Answered</div>
+        <div class="prayer-text">"My daughter's surgery went well. The doctors say she'll make a full recovery. We serve a God who heals. Thank you for standing in the gap with us."</div>
+        <div class="prayer-meta">Submitted by <strong>A Union County Family</strong> · 2 weeks ago</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Sunday <span>Holler</span></div>
+      <div class="footer-tagline">sundayholler.com</div>
+    </div>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('directory')">Directory</a>
+    </nav>
+    <p style="color:rgba(255,255,255,0.2); font-size:0.75rem;">© 2025</p>
+  </footer>
+</div>
+
+<!-- ════════════════ ABOUT PAGE ════════════════ -->
+<div id="page-about" class="page">
+  <div style="padding: 7rem 8vw 3rem; background: var(--ink);">
+    <span class="eyebrow" style="color:var(--gold-lt);">About Sunday Holler</span>
+    <h1 class="serif" style="font-size:clamp(2rem,5vw,3.5rem); color:#fff; font-weight:700;">Good churches<br>shouldn't be invisible.</h1>
+  </div>
+
+  <section class="about-section">
+    <div class="about-layout">
+      <div>
+        <blockquote class="about-pullquote">"A church that nobody can find is a light under a bushel."</blockquote>
+        <div class="about-body">
+          <p>Sunday Holler started with a simple observation: across four counties of some of the most church-going country in Tennessee, you couldn't find a single place online to look up when services were, what revivals were coming, or who was hosting the fifth Sunday singing.</p>
+          <p>Facebook posts disappear. Word of mouth only travels so far. The people who need to find a church most, whether newcomers to the area, families navigating grief, or folks just looking for a place to belong, had nowhere to look.</p>
+          <p>This site exists to change that. It's not affiliated with any denomination, any association, or any single congregation. It belongs to the community, and it stays free. Always.</p>
+          <p>If your church is missing, add it. If an event isn't listed, submit it. If you have a prayer need, share it. Sunday Holler works because the people of this region make it work.</p>
+        </div>
+      </div>
+      <div class="about-values">
+        <span class="eyebrow">What We Stand For</span>
+        <div class="about-value">
+          <div class="value-icon">⛪</div>
+          <div class="value-text">
+            <h4>Every Church Welcome</h4>
+            <p>Southern Baptist, Missionary Baptist, Primitive Baptist, Free Will Baptist, Methodist, Church of God, nondenominational. All are listed. None are favored.</p>
+          </div>
+        </div>
+        <div class="about-value">
+          <div class="value-icon">🆓</div>
+          <div class="value-text">
+            <h4>Free. Always.</h4>
+            <p>No listing fees, no sponsored placements, no advertising. A church's position in the directory is not for sale.</p>
+          </div>
+        </div>
+        <div class="about-value">
+          <div class="value-icon">🤝</div>
+          <div class="value-text">
+            <h4>Community Maintained</h4>
+            <p>No single person keeps this current. The community does. Submit updates, corrections, and new listings anytime.</p>
+          </div>
+        </div>
+        <div class="about-value">
+          <div class="value-icon">🏔️</div>
+          <div class="value-text">
+            <h4>Built for This Place</h4>
+            <p>This isn't a national directory that happens to include East Tennessee. It's built specifically for the ridge and valley country of Claiborne, Hancock, Grainger, and Union County.</p>
+          </div>
+        </div>
+        <div style="margin-top:2rem;">
+          <a class="btn btn-dark" href="#" onclick="openModal('church-modal')">Add Your Church</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-brand">Sunday <span>Holler</span></div>
+      <div class="footer-tagline">sundayholler.com · East Tennessee</div>
+    </div>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('directory')">Directory</a>
+      <a href="#" onclick="showPage('revivals')">Events</a>
+    </nav>
+    <p style="color:rgba(255,255,255,0.2); font-size:0.75rem;">© 2025 · Not affiliated with any denomination</p>
+  </footer>
+</div>
+
+<!-- ════════════════ MODALS ════════════════ -->
+
+<!-- Church Submission Modal -->
+<div class="modal-overlay" id="church-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('church-modal')">×</button>
+    <h3>Add Your Church</h3>
+    <div class="form-field">
+      <label>Church Name *</label>
+      <input type="text" placeholder="Full church name">
+    </div>
+    <div class="form-field">
+      <label>County *</label>
+      <select>
+        <option>Select County</option>
+        <option>Claiborne County</option>
+        <option>Hancock County</option>
+        <option>Grainger County</option>
+        <option>Union County</option>
+        <option>Other Nearby County</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label>Denomination</label>
+      <input type="text" placeholder="e.g. Southern Baptist, Church of God, Methodist...">
+    </div>
+    <div class="form-field">
+      <label>Street Address</label>
+      <input type="text" placeholder="123 Church Rd, Town, TN 37000">
+    </div>
+    <div class="form-field">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="(423) 000-0000">
+    </div>
+    <div class="form-field">
+      <label>Service Times</label>
+      <input type="text" placeholder="Sun School 10am · Worship 11am · Eve 6pm · Wed 7pm">
+    </div>
+    <div class="form-field">
+      <label>Pastor / Contact Name</label>
+      <input type="text" placeholder="Pastor's name (optional)">
+    </div>
+    <div class="form-field">
+      <label>Anything Else to Share</label>
+      <textarea placeholder="Special programs, history, notes about the congregation..."></textarea>
+    </div>
+    <button class="form-submit" onclick="closeModal('church-modal')">Submit Listing</button>
+  </div>
+</div>
+
+<!-- Event Submission Modal -->
+<div class="modal-overlay" id="event-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('event-modal')">×</button>
+    <h3>Submit an Event</h3>
+    <div class="form-field">
+      <label>Event Name *</label>
+      <input type="text" placeholder="Revival, Homecoming, Gospel Singing...">
+    </div>
+    <div class="form-field">
+      <label>Church Name *</label>
+      <input type="text" placeholder="Which church is hosting?">
+    </div>
+    <div class="form-field">
+      <label>County *</label>
+      <select>
+        <option>Select County</option>
+        <option>Claiborne County</option>
+        <option>Hancock County</option>
+        <option>Grainger County</option>
+        <option>Union County</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label>Event Type</label>
+      <select>
+        <option>Revival</option>
+        <option>Homecoming</option>
+        <option>Gospel Singing</option>
+        <option>Fifth Sunday Singing</option>
+        <option>Special Service</option>
+        <option>Community Event</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label>Date(s) *</label>
+      <input type="text" placeholder="e.g. April 6 through 11, 2025. Nightly 7pm">
+    </div>
+    <div class="form-field">
+      <label>Description</label>
+      <textarea placeholder="Tell people what to expect..."></textarea>
+    </div>
+    <button class="form-submit" onclick="closeModal('event-modal')">Submit Event</button>
+  </div>
+</div>
+
+<script>
+// ── PAGE NAVIGATION ──
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  const pg = document.getElementById('page-' + id);
+  pg.classList.add('active');
+  pg.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── NAV SCROLL ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── MODALS ──
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', function(e) {
+    if (e.target === this) closeModal(this.id);
+  });
+});
+
+// ── DIRECTORY FILTER ──
+let currentDenom = '';
+
+function setDenom(btn, denom) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  currentDenom = denom;
+  filterCards();
+}
+
+function filterCards() {
+  const search = (document.getElementById('dir-search')?.value || '').toLowerCase();
+  const county = document.getElementById('dir-county')?.value || '';
+
+  document.querySelectorAll('.church-card:not(.card-add)').forEach(card => {
+    const cardCounty = card.dataset.county || '';
+    const cardDenom  = card.dataset.denom  || '';
+    const cardText   = card.innerText.toLowerCase();
+
+    const matchCounty = !county || cardCounty === county;
+    const matchSearch = !search || cardText.includes(search);
+    const matchDenom  = !currentDenom ||
+      (currentDenom === 'Other'
+        ? !['Southern Baptist','Missionary Baptist','Primitive Baptist','Independent Baptist'].includes(cardDenom)
+        : cardDenom.includes(currentDenom));
+
+    card.style.display = (matchCounty && matchSearch && matchDenom) ? '' : 'none';
+  });
+}
+
+// ── SCROLL REVEAL ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+</script>
+</body>
+</html>
